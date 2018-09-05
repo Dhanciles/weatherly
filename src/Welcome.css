@@ -1,0 +1,37 @@
+.welcome {
+  
+}
+
+.welcome-msg {
+  font-size: 4rem;
+  font-weight: 700;
+  margin-top: 5rem;  
+}
+
+.prompt-msg {
+  font-size: 2rem;
+  font-weight: 400;
+  margin: 5rem 0 5rem 0;  
+}
+
+form {
+  display: flex;
+  justify-content: space-around;
+  align-items: center; 
+  margin: auto; 
+  width: 90%; 
+}
+
+form input {
+  font-size: 2rem;
+  padding: 1rem; 
+  text-align: center;
+}
+
+.submit-button {
+  /*margin-top: 5rem;*/
+  font-size: 2rem; 
+  padding: 1rem;
+}
+
+
