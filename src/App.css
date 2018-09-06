@@ -23,3 +23,9 @@
   border-radius: 150%; 
   border: 1px solid #3557ff;
 }
+
+.seven-hours {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}

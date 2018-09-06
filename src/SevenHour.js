@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Card from './Card'
+import './SevenHour.css';
 
 export default class SevenHour extends Component {
   constructor() {
@@ -18,7 +19,7 @@ export default class SevenHour extends Component {
           <Card cardInfo={hourlyForecast[key]} />
         </div>
       )
-    })
+    }).slice(0,7)
   }
 
 }
