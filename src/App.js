@@ -4,6 +4,7 @@ import { data } from './mockdata.js'
 import Welcome from './Welcome'
 import CurrentWeather from './CurrentWeather'
 import SevenHour from './SevenHour'
+import TenDay from './TenDay'
 
 export default class App extends Component {
   constructor() {
@@ -19,7 +20,10 @@ export default class App extends Component {
         </header>
         <Welcome />
         <CurrentWeather weatherData={data} />
-        <SevenHour sevenHourData={data} />
+        <div className="seven-hours">
+          <SevenHour sevenHourData={data} />
+        </div>
+        <TenDay tenDayData={data} />
       </div>
     );
   }
