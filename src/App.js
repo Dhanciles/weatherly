@@ -3,6 +3,7 @@ import './App.css';
 import { data } from './mockdata.js'
 import Welcome from './Welcome'
 import CurrentWeather from './CurrentWeather'
+import SevenHour from './SevenHour'
 
 export default class App extends Component {
   constructor() {
@@ -18,6 +19,7 @@ export default class App extends Component {
         </header>
         <Welcome />
         <CurrentWeather weatherData={data} />
+        <SevenHour sevenHourData={data} />
       </div>
     );
   }
