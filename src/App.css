@@ -1,4 +1,7 @@
 .App {
+  background-image: url('./images/sky-background.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
   text-align: center;
 }
 
@@ -25,7 +28,6 @@
 }
 
 .seven-hours {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
 }
