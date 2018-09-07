@@ -1,9 +1,13 @@
 .App {
+  background-image: url('./images/sky-background.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
   text-align: center;
 }
 
 .App-header {
-  background-color: #ffdd35;
+  /*background-color: #ffdd35;*/
+  background: radial-gradient(orange, yellow);
   height: 150px;
   padding: 20px;
   color: white;
@@ -25,7 +29,6 @@
 }
 
 .seven-hours {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
 }

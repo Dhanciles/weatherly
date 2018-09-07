@@ -1,5 +1,21 @@
+.seven-hour {
+  width: 99%;
+  margin: auto;
+}
+
+.seven-hour,
+.ten-days {
+  background-color: rgba(0, 0, 255, 0.4);
+  border: 1px solid #000000;
+  /*opacity: 0.5*/
+}
+
 .ten-days {
   display: flex;
   justify-content: space-around;
   /*align-items: center;*/
+}
+
+.weather-text {
+  /*opacity: 1 */
 }
