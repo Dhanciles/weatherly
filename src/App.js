@@ -21,7 +21,6 @@ export default class App extends Component {
   takeNameAndLocation(name, location) {
 
     this.setState({userName: name, location: location})
-    console.log(this.state, '')
   }
   
   render() {
