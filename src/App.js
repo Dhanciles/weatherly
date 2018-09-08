@@ -42,14 +42,12 @@ export default class App extends Component {
             </header>
             <WelcomeUser userName={this.state.userName}/>
             <CurrentWeather weatherData={data} />
-              <div className="seven-hours">
-                <SevenHour sevenHourData={data} />
-              </div>
-              <TenDay tenDayData={data} />
-          </div>
-          )
-       
+            <div className="seven-hours">
+              <SevenHour sevenHourData={data} />
+            </div>
+            <TenDay tenDayData={data} />
+           </div>
+          )  
       }
   }
 }
-
