@@ -11,7 +11,7 @@ export default class Welcome extends Component {
       }
       this.handleNameChange = this.handleNameChange.bind(this);
       this.handleLocationChange = this.handleLocationChange.bind(this); 
-
+      this.submitNameAndLocation = this.submitNameAndLocation.bind(this); 
   }
 
   handleNameChange(event) {
@@ -22,7 +22,13 @@ export default class Welcome extends Component {
     this.setState({location: event.target.value})
   } 
 
+  submitNameAndLocation(event) {
+    event.preventDefault()
+    this.props.takeNameAndLocation(this.state.userName, this.state.location)
+  }
+
   render() {
+    console.log(this.props)
     return (
       <div className="welcome"> 
         <h1 className="welcome-msg"> Welcome to Weatherly</h1>

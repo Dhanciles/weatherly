@@ -14,6 +14,13 @@ export default class App extends Component {
         userName: '', 
         location: ''
       }
+      this.takeNameAndLocation = this.takeNameAndLocation.bind(this); 
+  }
+
+  takeNameAndLocation(name, location) {
+    
+    this.setState({userName: name, location: location})
+    console.log(this.state, '')
   }
   
   render() {
@@ -22,7 +29,7 @@ export default class App extends Component {
         <header className="App-header">
         <img className="logo" src={require("./images/weathrly-logo.png")}/>
         </header>
-        <Welcome />
+        <Welcome takeNameAndLocation={this.takeNameAndLocation}/>
         <CurrentWeather weatherData={data} />
         <div className="seven-hours">
           <SevenHour sevenHourData={data} />
