@@ -5,6 +5,7 @@ import Welcome from './Welcome'
 import CurrentWeather from './CurrentWeather'
 import SevenHour from './SevenHour'
 import TenDay from './TenDay'
+import WelcomeUser from './WelcomeUser'
 
 export default class App extends Component {
   constructor() {
@@ -18,25 +19,37 @@ export default class App extends Component {
   }
 
   takeNameAndLocation(name, location) {
-    
+
     this.setState({userName: name, location: location})
     console.log(this.state, '')
   }
   
   render() {
-    return (
-      <div className="App">
-        <header className="App-header">
-        <img className="logo" src={require("./images/weathrly-logo.png")}/>
-        </header>
-        <Welcome takeNameAndLocation={this.takeNameAndLocation}/>
-        <CurrentWeather weatherData={data} />
-        <div className="seven-hours">
-          <SevenHour sevenHourData={data} />
+      if(!this.state.userName) {
+    return ( 
+        <div className="App">
+          <header className="App-header">
+            <img className="logo" src={require("./images/weathrly-logo.png")}/>
+          </header>
+          <Welcome takeNameAndLocation={this.takeNameAndLocation}/>
         </div>
-        <TenDay tenDayData={data} />
-      </div>
-    );
+        );
+      } else {
+        return(
+           <div className="App">
+            <header className="App-header">
+              <img className="logo" src={require("./images/weathrly-logo.png")}/>
+            </header>
+            <WelcomeUser userName={this.state.userName}/>
+            <CurrentWeather weatherData={data} />
+              <div className="seven-hours">
+                <SevenHour sevenHourData={data} />
+              </div>
+              <TenDay tenDayData={data} />
+          </div>
+          )
+       
+      }
   }
 }
 
