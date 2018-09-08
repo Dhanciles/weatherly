@@ -5,17 +5,38 @@ export default class Welcome extends Component {
   constructor() {
     super(); 
 
+    this.state = {
+        userName: '', 
+        location: ''
+      }
+      this.handleNameChange = this.handleNameChange.bind(this);
+      this.handleLocationChange = this.handleLocationChange.bind(this); 
+      this.submitNameAndLocation = this.submitNameAndLocation.bind(this); 
+  }
+
+  handleNameChange(event) {
+      this.setState({userName: event.target.value})
+  }
+
+  handleLocationChange(event) {
+    this.setState({location: event.target.value})
+  } 
+
+  submitNameAndLocation(event) {
+    event.preventDefault()
+    this.props.takeNameAndLocation(this.state.userName, this.state.location)
   }
 
   render() {
+    console.log(this.props)
     return (
       <div className="welcome"> 
         <h1 className="welcome-msg"> Welcome to Weatherly</h1>
         <p className="prompt-msg">Please Submit Your Name and Location Below</p> 
         <form>
-          <input className="user-name"type="text" placeholder="Enter your Name"/>
-          <input className="location" type="text" placeholder="Enter City or Zip Code"/>
-          <button className="submit-button">Submit</button>
+          <input id="user-name"type="text" placeholder="Enter your Name" onChange={this.handleNameChange}/>
+          <input className="location" type="text" placeholder="Enter City or Zip Code" onChange={this.handleLocationChange}/>
+          <button className="submit-button" onClick={this.submitNameAndLocation}>Submit</button>
         </form> 
       </div> 
     )
