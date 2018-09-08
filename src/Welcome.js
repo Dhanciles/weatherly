@@ -28,7 +28,7 @@ export default class Welcome extends Component {
   }
 
   render() {
-    console.log(this.props)
+    
     return (
       <div className="welcome"> 
         <h1 className="welcome-msg"> Welcome to Weatherly</h1>
