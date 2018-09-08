@@ -6,7 +6,7 @@ import './CurrentWeather.css'
 export default class CurrentWeather extends Component {
   constructor() {
     super();
-
+    
   }
 
   render() {
