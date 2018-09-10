@@ -37,16 +37,28 @@ export default class App extends Component {
     this.callApi(cleanCity, cleanState)
     this.sevenHourApiCall(cleanCity, cleanState)
     this.tenDayApiCall(cleanCity, cleanState)
-    } else {
-    console.log('poop')
-
+    } else if (location.length === 5) {
+      this.getZipCode(location)
     }
    
   }
 
-  // getZipCode(location) {
-    
-  // }
+  getZipCode(location) {
+    fetch(`http://api.wunderground.com/api/${apiKey}/geolookup/q/${location}.json`)
+    .then(response => response.json())
+    .then(info => {
+      let zipCity = info.location.city
+      let zipState = info.location.state
+      
+      this.callApi(zipCity, zipState)
+      this.sevenHourApiCall(zipCity, zipState)
+      this.tenDayApiCall(zipCity, zipState)    
+    })
+    .catch(error => {
+      console.log(error)
+    })
+
+  }
 
   callApi(city, state) {
     fetch(`http://api.wunderground.com/api/${apiKey}/forecast/q/${state}/${city}.json`)
