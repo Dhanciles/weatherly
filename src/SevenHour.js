@@ -9,17 +9,21 @@ export default class SevenHour extends Component {
   }
 
   render() {
-    let keys = Object.keys(this.props.sevenHourData.hourly_forecast)
-    let hourlyForecast = this.props.sevenHourData.hourly_forecast
+    if (this.props.sevenHourData.hourly_forecast) {
+      let hourlyForecast = this.props.sevenHourData.hourly_forecast
 
-    return keys.map((key) => {
+      return hourlyForecast.map((hours) => {
      
       return(
         <div>
-          <Card cardInfo={hourlyForecast[key]} />
+          <Card cardInfo={hours} />
         </div>
       )
     }).slice(0,7)
+  } else {
+    return (<p>Loading</p>)
   }
+}
+
 
 }

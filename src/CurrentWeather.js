@@ -10,10 +10,7 @@ export default class CurrentWeather extends Component {
   }
 
   render() {
-    // let weatherPrefix = this.props.weatherData
-
     if (this.props.weatherData.forecast) {
-      console.log(this.props.weatherData.forecast)
       return(
         <div className="currWeather">
           <h1>{this.props.cityData}, {this.props.stateData}</h1>
@@ -30,8 +27,4 @@ export default class CurrentWeather extends Component {
       ) 
     }
   }
-
-
-
-
 }
