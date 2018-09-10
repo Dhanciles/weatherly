@@ -8,16 +8,18 @@ export default class TenDay extends Component {
   }
 
   render() {
-    let keys = Object.keys(this.props.tenDayData)
-    let tenDay = this.props.tenDayData.forecast.simpleforecast.forecastday
 
-    return tenDay.map((day) => {
+    if (this.props.tenDayData.forecast) {
+      let dailyForecast = this.props.tenDayData.forecast.simpleforecast.forecastday
+      return dailyForecast.map((days) => {
       return(
         <div>
-          <Card tenDayInfo={day} />
+          <Card tenDayInfo={days} />
         </div>
       )
     })
+    } else {
+    return (<p>Loading</p>)
+    }
   }
-
 }
