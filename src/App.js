@@ -36,10 +36,11 @@ export default class App extends Component {
 
     this.callApi(cleanCity, cleanState)
     this.sevenHourApiCall(cleanCity, cleanState)
-  } else {
+    this.tenDayApiCall(cleanCity, cleanState)
+    } else {
     console.log('poop')
 
-  }
+    }
    
   }
 
@@ -75,6 +76,19 @@ export default class App extends Component {
     })
   }
 
+  tenDayApiCall(city, state) {
+    fetch(`http://api.wunderground.com/api/${apiKey}/forecast10day/q/${state}/${city}.json`)
+    .then(response => response.json())
+    .then(info => {
+      this.setState({
+        tenDayData: info
+      })
+    })
+    .catch(error => {
+      console.log(error)
+    })
+  }
+
   componentDidUpdate() {
     this.cleanLocation(this.state.location)
   }
@@ -103,7 +117,7 @@ export default class App extends Component {
             <div className="seven-hours">
               <SevenHour sevenHourData={this.state.sevenHourData} />
             </div>
-            <TenDay tenDayData={data} />
+            <TenDay tenDayData={this.state.tenDayData} />
            </div>
           )  
       }
