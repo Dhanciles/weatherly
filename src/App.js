@@ -27,6 +27,7 @@ export default class App extends Component {
 
   takeNameAndLocation(name, location) {
     this.setState({userName: name, location: location})
+    this.cleanLocation(location)
   }
 
   cleanLocation(location) {
@@ -117,11 +118,9 @@ export default class App extends Component {
     })
   }
 
-  componentDidUpdate() {
-    if (this.state.location) {
-      this.cleanLocation(this.state.location)
-    }
-  }
+  // updateLocalStorage() {
+
+  // }
   
   render() {
 
