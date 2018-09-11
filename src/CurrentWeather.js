@@ -10,7 +10,7 @@ export default class CurrentWeather extends Component {
   }
 
   render() {
-    if (this.props.weatherData.forecast) {
+    if (this.props.weatherData.forecast && this.props.tempData.current_observation) {
       return(
         <div className="currWeather">
           <h1>{this.props.cityData}, {this.props.stateData}</h1>
