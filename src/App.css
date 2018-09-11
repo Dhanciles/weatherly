@@ -13,6 +13,16 @@
   color: white;
 }
 
+.App-header-rerender {
+  align-items: center;
+  background: radial-gradient(orange, yellow);
+  color: white;
+  display: flex;
+  height: 150px;
+  justify-content: space-around;
+  padding: 20px;
+}
+
 .App-title {
   font-size: 1.5em;
 }
@@ -28,7 +38,20 @@
   border: 1px solid #3557ff;
 }
 
+.search-container {
+
+}
+
 .seven-hours {
   display: grid;
   grid-template-columns: repeat(7, 1fr);
+}
+
+.Welcome-current-weather {
+  display: flex;
+}
+
+.welcome-user {
+  color: #53BDE2;
+  font-weight: 700;
 }

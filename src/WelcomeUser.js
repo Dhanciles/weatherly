@@ -1,4 +1,5 @@
 import React,  {Component} from 'react'
+import './WelcomeUser.css';
 
 export default class WelcomeUser extends Component {
   constructor() {
@@ -7,10 +8,9 @@ export default class WelcomeUser extends Component {
 
   render() {
     return(
-      <div className="welcome">
-        <h1 className="welcome-user"> Welcome {this.props.userName}</h1>
-        <input className="search-input" type="text" />
-        <button className="search-button">Search</button> 
+      <div className="welcome-box">
+
+       <p>You want content here?  You don't GET content here.  EARN that shit, mother fucker!</p>
       </div>
 
       )

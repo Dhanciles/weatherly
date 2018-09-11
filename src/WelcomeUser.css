@@ -1,5 +1,11 @@
-.currWeather {
+.welcome-box {
   background-color: rgba(0, 0, 255, 0.4);
   border: 1px solid #000000;
+  padding-bottom: 60px;
   width: 50%;
+}
+
+.welcome-user {
+  margin: 0;
+  padding: 3%;
 }

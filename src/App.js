@@ -15,7 +15,8 @@ export default class App extends Component {
       this.state = {
         userName: '', 
         location: '', 
-        currentWeatherData: {}, 
+        currentWeatherData: {},
+        currentTemp: {}, 
         sevenHourData: {}, 
         tenDayData: {},
         city: '',
@@ -37,6 +38,7 @@ export default class App extends Component {
     this.callApi(cleanCity, cleanState)
     this.sevenHourApiCall(cleanCity, cleanState)
     this.tenDayApiCall(cleanCity, cleanState)
+    this.callCurrWeather(cleanCity, cleanState)
     } else if (location.length === 5) {
       this.getZipCode(location)
     }
@@ -52,7 +54,8 @@ export default class App extends Component {
       
       this.callApi(zipCity, zipState)
       this.sevenHourApiCall(zipCity, zipState)
-      this.tenDayApiCall(zipCity, zipState)    
+      this.tenDayApiCall(zipCity, zipState) 
+      this.callCurrWeather(zipCity, zipState)   
     })
     .catch(error => {
       console.log(error)
@@ -68,6 +71,19 @@ export default class App extends Component {
         currentWeatherData: info,
         city: city,
         state: state
+      })
+    })
+    .catch(error => {
+      console.log(error)
+    })
+  }
+
+  callCurrWeather(city, state) {
+    fetch(`http://api.wunderground.com/api/${apiKey}/conditions/q/${state}/${city}.json`)
+    .then(response => response.json())
+    .then(info => {
+      this.setState({
+        currentTemp: info 
       })
     })
     .catch(error => {
@@ -102,7 +118,9 @@ export default class App extends Component {
   }
 
   componentDidUpdate() {
-    this.cleanLocation(this.state.location)
+    if (this.state.location) {
+      this.cleanLocation(this.state.location)
+    }
   }
   
   render() {
@@ -119,13 +137,21 @@ export default class App extends Component {
       } else {
         return(
            <div className="App">
-            <header className="App-header">
+            <header className="App-header-rerender">
+            <h1 className="welcome-user"> Welcome {this.state.userName}</h1>
               <img className="logo" src={require("./images/weathrly-logo.png")}/>
+            <div className="search-container">
+              <input className="search-input" type="text" placeholder="New Location" />
+              <button className="search-button">Submit</button>
+            </div>   
             </header>
-            <WelcomeUser userName={this.state.userName}/>
-            <CurrentWeather weatherData={this.state.currentWeatherData}
-                            cityData={this.state.city}
-                            stateData={this.state.state} />
+            <div className="Welcome-current-weather">
+              <CurrentWeather weatherData={this.state.currentWeatherData}
+                              tempData={this.state.currentTemp}
+                              cityData={this.state.city}
+                              stateData={this.state.state} />
+              {<WelcomeUser />}
+            </div>
             <div className="seven-hours">
               <SevenHour sevenHourData={this.state.sevenHourData} />
             </div>
