@@ -32,10 +32,10 @@ export default class Welcome extends Component {
     return (
       <div className="welcome"> 
         <h1 className="welcome-msg"> Welcome to Weatherly</h1>
-        <p className="prompt-msg">Please Submit Your Name and Location Below</p> 
+        <p className="prompt-msg">Please Enter a Username and Location Below</p> 
         <form>
-          <input id="user-name"type="text" placeholder="Enter your Name" onChange={this.handleNameChange}/>
-          <input className="location" type="text" placeholder="Enter City or Zip Code" onChange={this.handleLocationChange}/>
+          <input id="user-name"type="text" placeholder="Username" onChange={this.handleNameChange}/>
+          <input className="location" type="text" placeholder="City, State/Zip Code" onChange={this.handleLocationChange}/>
           <button className="submit-button" onClick={this.submitNameAndLocation}>Submit</button>
         </form> 
       </div> 
