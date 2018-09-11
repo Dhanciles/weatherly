@@ -27,8 +27,8 @@ export default class App extends Component {
 
   takeNameAndLocation(name, location) {
     this.setState({userName: name, location: location})
-    this.updateLocalStorage(name, location)
     this.cleanLocation(location)
+    this.updateLocalStorage(location, name)
   }
 
   cleanLocation(location) {
@@ -119,12 +119,33 @@ export default class App extends Component {
     })
   }
 
- updateLocalStorage(name, location) {
-    localStorage.setItem(name, JSON.stringify(location))
+  updateLocalStorage(location, name) {
+    localStorage.setItem('weatherly', location)
+     if(name) {
+      localStorage.setItem('userName', name)
+    }  
   } 
+
+  getFromLocalStorage() {
+    if(localStorage.length) {
+      const retrieveLocation = localStorage.getItem('weatherly')
+      const retrieveName = localStorage.getItem('userName')
+
+      this.cleanLocation(retrieveLocation)
+      this.setState({
+      userName: retrieveName, 
+      location: retrieveLocation
+        })
+      } 
+  }
+
+  componentDidMount() {
+    this.getFromLocalStorage()
+  }
+
   
   render() {
-
+      
       if(!this.state.userName) {
     return ( 
         <div className="App">
