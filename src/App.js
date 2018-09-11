@@ -23,6 +23,8 @@ export default class App extends Component {
         state: ''
       }
       this.takeNameAndLocation = this.takeNameAndLocation.bind(this); 
+      this.getLocation = this.getLocation.bind(this)
+      this.handleChange = this.handleChange.bind(this); 
   }
 
   takeNameAndLocation(name, location) {
@@ -31,7 +33,17 @@ export default class App extends Component {
     this.updateLocalStorage(location, name)
   }
 
+  handleChange(event) {
+    this.setState({location: event.target.value})
+  } 
+
+  getLocation() {
+    this.cleanLocation(this.state.location)
+    this.updateLocalStorage(this.state.location)
+  }
+
   cleanLocation(location) {
+
     if (location.includes(',')) {
     let cleanLocation = location.split(',')
     let cleanCity = cleanLocation[0].trim()
@@ -162,8 +174,8 @@ export default class App extends Component {
             <h1 className="welcome-user"> Welcome {this.state.userName}</h1>
               <img className="logo" src={require("./images/weathrly-logo.png")}/>
             <div className="search-container">
-              <input className="search-input" type="text" placeholder="New Location" />
-              <button className="search-button">Submit</button>
+              <input className="search-input" type="text" placeholder="New Location" onChange={this.handleChange} />
+              <button className="search-button" onClick={this.getLocation} >Submit</button>
             </div>   
             </header>
             <div className="Welcome-current-weather">
