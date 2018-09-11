@@ -37,9 +37,10 @@ export default class App extends Component {
     this.setState({location: event.target.value})
   } 
 
-  getLocation() {
+  getLocation(event) {
     this.cleanLocation(this.state.location)
     this.updateLocalStorage(this.state.location)
+    document.querySelector('.search-input').value = ''
   }
 
   cleanLocation(location) {
