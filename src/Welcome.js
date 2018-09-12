@@ -8,7 +8,8 @@ export default class Welcome extends Component {
     this.state = {
         userName: '', 
         location: '', 
-        trie: {}
+        trie: {}, 
+        suggestions: []
       }
       this.handleNameChange = this.handleNameChange.bind(this);
       this.handleLocationChange = this.handleLocationChange.bind(this); 
@@ -26,8 +27,10 @@ export default class Welcome extends Component {
   }
 
   handleLocationChange(event) {
-    this.setState({location: event.target.value})
-    console.log(this.state.trie.suggest(event.target.value))
+    this.setState({
+      location: event.target.value, 
+      suggestions: this.state.trie.suggest(event.target.value)
+    })
   } 
 
   submitNameAndLocation(event) {

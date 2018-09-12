@@ -23,7 +23,8 @@ export default class App extends Component {
         tenDayData: {},
         city: '',
         state: '', 
-        trie: {}
+        trie: {}, 
+        suggestions: []
       }
       this.takeNameAndLocation = this.takeNameAndLocation.bind(this); 
       this.getLocation = this.getLocation.bind(this)
@@ -37,8 +38,10 @@ export default class App extends Component {
   }
 
   handleChange(event) {
-    this.setState({location: event.target.value})
-    console.log(this.state.trie.suggest(event.target.value))
+    this.setState({
+      location: event.target.value, 
+      suggestions: this.state.trie.suggest(event.target.value)
+    })
   } 
 
   getLocation(event) {
