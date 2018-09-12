@@ -37,8 +37,6 @@ describe('App', () => {
 
     expect(wrapper.find('WelcomeUser').length).toEqual(1)
   })
-
-
 })
 
 

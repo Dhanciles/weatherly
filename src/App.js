@@ -7,6 +7,8 @@ import CurrentWeather from './CurrentWeather'
 import SevenHour from './SevenHour'
 import TenDay from './TenDay'
 import WelcomeUser from './WelcomeUser'
+import Trie from '../node_modules/boilerplate/lib/index.js'
+import cityData from '../node_modules/boilerplate/lib/citydata.js'
 
 export default class App extends Component {
   constructor() {
@@ -20,7 +22,9 @@ export default class App extends Component {
         sevenHourData: {}, 
         tenDayData: {},
         city: '',
-        state: ''
+        state: '', 
+        trie: {}, 
+        suggestions: []
       }
       this.takeNameAndLocation = this.takeNameAndLocation.bind(this); 
       this.getLocation = this.getLocation.bind(this)
@@ -30,11 +34,14 @@ export default class App extends Component {
   takeNameAndLocation(name, location) {
     this.setState({userName: name, location: location})
     this.cleanLocation(location)
-    this.updateLocalStorage(location, name)
+    this.updateLocalStorage(location, name)    
   }
 
   handleChange(event) {
-    this.setState({location: event.target.value})
+    this.setState({
+      location: event.target.value, 
+      suggestions: this.state.trie.suggest(event.target.value)
+    })
   } 
 
   getLocation(event) {
@@ -152,6 +159,15 @@ export default class App extends Component {
       } 
   }
 
+  componentWillMount() {
+    let trie = new Trie()
+
+    trie.populate(cityData.data)
+    this.setState({
+      trie: trie 
+    })
+  }
+
   componentDidMount() {
     this.getFromLocalStorage()
   }
@@ -165,7 +181,7 @@ export default class App extends Component {
           <header className="App-header">
             <img className="logo" src={require("./images/weathrly-logo.png")}/>
           </header>
-          <Welcome takeNameAndLocation={this.takeNameAndLocation}/>
+          <Welcome takeNameAndLocation={this.takeNameAndLocation} trie={this.state.trie}/>
         </div>
         );
       } else {
@@ -175,7 +191,14 @@ export default class App extends Component {
             <h1 className="welcome-user"> Welcome {this.state.userName}</h1>
               <img className="logo" src={require("./images/weathrly-logo.png")}/>
             <div className="search-container">
-              <input className="search-input" type="text" placeholder="New Location" onChange={this.handleChange} />
+              <input className="search-input" placeholder="New Location" onChange={this.handleChange} list="cities" />
+
+              <datalist id="cities">
+               {this.state.suggestions.map(city => {
+                  console.log(city)
+                  return (`<option value=${city}>`)
+                })} 
+              </datalist>
               <button className="search-button" onClick={this.getLocation} >Submit</button>
             </div>   
             </header>

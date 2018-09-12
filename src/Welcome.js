@@ -7,11 +7,19 @@ export default class Welcome extends Component {
 
     this.state = {
         userName: '', 
-        location: ''
+        location: '', 
+        trie: {}, 
+        suggestions: []
       }
       this.handleNameChange = this.handleNameChange.bind(this);
       this.handleLocationChange = this.handleLocationChange.bind(this); 
       this.submitNameAndLocation = this.submitNameAndLocation.bind(this); 
+  }
+
+  componentDidMount() {
+    this.setState({
+      trie: this.props.trie
+    })
   }
 
   handleNameChange(event) {
@@ -19,7 +27,10 @@ export default class Welcome extends Component {
   }
 
   handleLocationChange(event) {
-    this.setState({location: event.target.value})
+    this.setState({
+      location: event.target.value, 
+      suggestions: this.state.trie.suggest(event.target.value)
+    })
   } 
 
   submitNameAndLocation(event) {
