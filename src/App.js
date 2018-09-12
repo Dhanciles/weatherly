@@ -33,11 +33,12 @@ export default class App extends Component {
   takeNameAndLocation(name, location) {
     this.setState({userName: name, location: location})
     this.cleanLocation(location)
-    this.updateLocalStorage(location, name)
+    this.updateLocalStorage(location, name)    
   }
 
   handleChange(event) {
     this.setState({location: event.target.value})
+    console.log(this.state.trie.suggest(event.target.value))
   } 
 
   getLocation(event) {
@@ -159,7 +160,6 @@ export default class App extends Component {
     let trie = new Trie()
 
     trie.populate(cityData.data)
-
     this.setState({
       trie: trie 
     })
@@ -178,7 +178,7 @@ export default class App extends Component {
           <header className="App-header">
             <img className="logo" src={require("./images/weathrly-logo.png")}/>
           </header>
-          <Welcome takeNameAndLocation={this.takeNameAndLocation}/>
+          <Welcome takeNameAndLocation={this.takeNameAndLocation} trie={this.state.trie}/>
         </div>
         );
       } else {
