@@ -191,7 +191,14 @@ export default class App extends Component {
             <h1 className="welcome-user"> Welcome {this.state.userName}</h1>
               <img className="logo" src={require("./images/weathrly-logo.png")}/>
             <div className="search-container">
-              <input className="search-input" type="text" placeholder="New Location" onChange={this.handleChange} />
+              <input className="search-input" placeholder="New Location" onChange={this.handleChange} list="cities" />
+
+              <datalist id="cities">
+               {this.state.suggestions.map(city => {
+                  console.log(city)
+                  return (`<option value=${city}>`)
+                })} 
+              </datalist>
               <button className="search-button" onClick={this.getLocation} >Submit</button>
             </div>   
             </header>
