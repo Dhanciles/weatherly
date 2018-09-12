@@ -7,6 +7,8 @@ import CurrentWeather from './CurrentWeather'
 import SevenHour from './SevenHour'
 import TenDay from './TenDay'
 import WelcomeUser from './WelcomeUser'
+import Trie from '../node_modules/boilerplate/lib/index.js'
+import cityData from '../node_modules/boilerplate/lib/citydata.js'
 
 export default class App extends Component {
   constructor() {
@@ -20,7 +22,8 @@ export default class App extends Component {
         sevenHourData: {}, 
         tenDayData: {},
         city: '',
-        state: ''
+        state: '', 
+        trie: {}
       }
       this.takeNameAndLocation = this.takeNameAndLocation.bind(this); 
       this.getLocation = this.getLocation.bind(this)
@@ -150,6 +153,16 @@ export default class App extends Component {
       location: retrieveLocation
         })
       } 
+  }
+
+  componentWillMount() {
+    let trie = new Trie()
+
+    trie.populate(cityData.data)
+
+    this.setState({
+      trie: trie 
+    })
   }
 
   componentDidMount() {
