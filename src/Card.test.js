@@ -17,7 +17,6 @@ describe('Card', () => {
       ReactDOM.unmountComponentAtNode(div);
     })
   })
-
   it('should be receiving props', () => {
     let cardData = data.forecast.simpleforecast.forecastday
      
@@ -30,9 +29,5 @@ describe('Card', () => {
       
       expect(card.props).toBeDefined()
     })
-
-
   })
-
-
 })
