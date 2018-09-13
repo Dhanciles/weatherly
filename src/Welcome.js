@@ -45,8 +45,16 @@ export default class Welcome extends Component {
         <h1 className="welcome-msg"> Welcome to Weatherly</h1>
         <p className="prompt-msg">Please Enter a Username and Location Below</p> 
         <form>
-          <input id="user-name"type="text" placeholder="Username" onChange={this.handleNameChange}/>
-          <input className="location" type="text" placeholder="City, State/Zip Code" onChange={this.handleLocationChange}/>
+          <input id="user-name" type="text" placeholder="Username" onChange={this.handleNameChange} />
+          <input className="location" type="text" placeholder="City, State/Zip Code" list="cities" onChange={this.handleLocationChange}/>
+
+          <datalist id="cities">
+               {
+                this.state.suggestions.map(city => {
+                  console.log(city)
+                  return <option>{city}</option>
+                })} 
+              </datalist>
           <button className="submit-button" onClick={this.submitNameAndLocation}>Submit</button>
         </form> 
       </div> 

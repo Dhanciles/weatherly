@@ -6,7 +6,6 @@
 }
 
 .App-header {
-  /*background-color: #ffdd35;*/
   background: radial-gradient(orange, yellow);
   height: 150px;
   padding: 20px;
@@ -38,10 +37,6 @@
   border: 1px solid #3557ff;
 }
 
-.search-container {
-
-}
-
 .seven-hours {
   display: grid;
   grid-template-columns: repeat(7, 1fr);
@@ -49,6 +44,7 @@
 
 .Welcome-current-weather {
   display: flex;
+  width: 100%;
 }
 
 .welcome-user {

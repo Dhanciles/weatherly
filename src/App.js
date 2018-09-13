@@ -40,11 +40,12 @@ export default class App extends Component {
   handleChange(event) {
     this.setState({
       location: event.target.value, 
-      suggestions: this.state.trie.suggest(event.target.value)
+      suggestions: this.state.trie.suggest(event.target.value).slice(0, 11)
     })
   } 
 
-  getLocation(event) {
+  getLocation() {
+    console.log(this.state.location)
     this.cleanLocation(this.state.location)
     this.updateLocalStorage(this.state.location)
     document.querySelector('.search-input').value = ''
@@ -191,15 +192,16 @@ export default class App extends Component {
             <h1 className="welcome-user"> Welcome {this.state.userName}</h1>
               <img className="logo" src={require("./images/weathrly-logo.png")}/>
             <div className="search-container">
-              <input className="search-input" placeholder="New Location" onChange={this.handleChange} list="cities" />
+              <input className="search-input" type="text" placeholder="New Location" onChange={this.handleChange} list="cities" />
 
               <datalist id="cities">
-               {this.state.suggestions.map(city => {
+               { this.state.suggestions < 0 &&
+                this.state.suggestions.map(city => {
                   console.log(city)
-                  return (`<option value=${city}>`)
+                  return <option>{city}</option>
                 })} 
               </datalist>
-              <button className="search-button" onClick={this.getLocation} >Submit</button>
+              <button className="search-button" onClick={this.getLocation}>Submit</button>
             </div>   
             </header>
             <div className="Welcome-current-weather">
@@ -207,7 +209,6 @@ export default class App extends Component {
                               tempData={this.state.currentTemp}
                               cityData={this.state.city}
                               stateData={this.state.state} />
-              {<WelcomeUser />}
             </div>
             <div className="seven-hours">
               <SevenHour sevenHourData={this.state.sevenHourData} />
