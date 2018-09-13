@@ -199,7 +199,7 @@ export default class App extends Component {
                 this.state.suggestions.map(city => {
                   console.log(city)
                   return <option>{city}</option>
-                })} 
+                })}
               </datalist>
               <button className="search-button" onClick={this.getLocation}>Submit</button>
             </div>   

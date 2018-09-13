@@ -49,7 +49,7 @@ export default class Welcome extends Component {
           <input className="location" type="text" placeholder="City, State/Zip Code" list="cities" onChange={this.handleLocationChange}/>
 
           <datalist id="cities">
-               {
+               {this.state.suggestions < 0 &&
                 this.state.suggestions.map(city => {
                   console.log(city)
                   return <option>{city}</option>

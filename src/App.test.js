@@ -46,13 +46,6 @@ describe('App', () => {
     localStorage.clear()
   })
 
-  it('should render WelcomeUser component', () => {
-    wrapper.instance().takeNameAndLocation('Alex', '80013')
-
-    expect(wrapper.find('WelcomeUser').length).toEqual(1)
-    localStorage.clear()
-  })
-
   it('should have state and be able to update state', () => {
     const input = { userName: 'Derek', location: '80013' }
 
