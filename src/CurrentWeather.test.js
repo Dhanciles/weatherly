@@ -9,9 +9,19 @@ describe('CurrentWeather', () => {
 
   it('renders without crashing', () => {
     const div = document.createElement('div');
-    ReactDOM.render(<CurrentWeather weatherData={data} />, div);
+    ReactDOM.render(<CurrentWeather weatherData={data}
+                                    tempData={data} />, div);
     ReactDOM.unmountComponentAtNode(div);
   });
 
-
+  it('should be able to take props', () => {
+    const div = document.createElement('div');
+    ReactDOM.render(<CurrentWeather weatherData={data}
+                                    tempData={data} />, div);
+    let currWeather = <CurrentWeather weatherData={data}
+                                    tempData={data} />
+    ReactDOM.unmountComponentAtNode(div);
+ 
+    expect(currWeather.props).toBeDefined()
+  });
 })

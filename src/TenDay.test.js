@@ -13,5 +13,13 @@ describe('TenDay', () => {
     ReactDOM.unmountComponentAtNode(div);
   });
 
+  it('should be able to take props', () => {
+    const div = document.createElement('div');
+    ReactDOM.render(<TenDay tenDayData={data} />, div);
+    let tenDay = <TenDay tenDayData={data} />
+    ReactDOM.unmountComponentAtNode(div);
+
+    expect(tenDay.props).toBeDefined()
+  });
 
 })
