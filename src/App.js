@@ -147,7 +147,7 @@ export default class App extends Component {
   } 
 
   getFromLocalStorage() {
-    if(localStorage.length) {
+    if(localStorage.getItem('weatherly') !== null) {
       const retrieveLocation = localStorage.getItem('weatherly')
       const retrieveName = localStorage.getItem('userName')
 

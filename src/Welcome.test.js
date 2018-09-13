@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { shallow, mount } from 'enzyme';
 import Welcome from './Welcome';
+import App from './App';
 
 describe('Welcome', () => {
 
@@ -20,7 +21,8 @@ describe('Welcome', () => {
   it('should have state and be able to update state', () => {
     const input = { userName: 'Derek', location: '80013' }
 
-    expect(wrapper.state()).toEqual({userName: '', location: ''})
+    expect(wrapper.state().userName).toEqual('')
+    expect(wrapper.state().location).toEqual('')
 
     wrapper.setState({userName: input.userName, location: input.location })
 
