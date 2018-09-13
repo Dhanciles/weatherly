@@ -195,8 +195,9 @@ export default class App extends Component {
               <input className="search-input" type="text" placeholder="New Location" onChange={this.handleChange} list="cities" />
 
               <datalist id="cities">
-               {
+               { this.state.suggestions < 0 &&
                 this.state.suggestions.map(city => {
+                  console.log(city)
                   return <option>{city}</option>
                 })} 
               </datalist>
@@ -208,7 +209,6 @@ export default class App extends Component {
                               tempData={this.state.currentTemp}
                               cityData={this.state.city}
                               stateData={this.state.state} />
-              {<WelcomeUser />}
             </div>
             <div className="seven-hours">
               <SevenHour sevenHourData={this.state.sevenHourData} />
