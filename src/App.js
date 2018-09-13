@@ -44,10 +44,10 @@ export default class App extends Component {
     })
   } 
 
-  getLocation(location=this.state.location) {
-    console.log(location)
-    this.cleanLocation(location)
-    this.updateLocalStorage(location)
+  getLocation() {
+    console.log(this.state.location)
+    this.cleanLocation(this.state.location)
+    this.updateLocalStorage(this.state.location)
     document.querySelector('.search-input').value = ''
   }
 
@@ -195,10 +195,9 @@ export default class App extends Component {
               <input className="search-input" type="text" placeholder="New Location" onChange={this.handleChange} list="cities" />
 
               <datalist id="cities">
-               { this.state.suggestions > 0 &&
+               {
                 this.state.suggestions.map(city => {
-                  console.log(city)
-                  return <option onClick={ (city) => this.getLocation(city)}>{city}</option>
+                  return <option>{city}</option>
                 })} 
               </datalist>
               <button className="search-button" onClick={this.getLocation}>Submit</button>

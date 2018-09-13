@@ -12,10 +12,10 @@ export default class SevenHour extends Component {
     if (this.props.sevenHourData.hourly_forecast) {
       let hourlyForecast = this.props.sevenHourData.hourly_forecast
 
-      return hourlyForecast.map((hours) => {
+      return hourlyForecast.map((hours, index) => {
      
       return(
-        <div>
+        <div key={index}>
           <Card cardInfo={hours} />
         </div>
       )
