@@ -189,7 +189,7 @@ export default class App extends Component {
         return(
            <div className="App">
             <header className="App-header-rerender">
-            <h1 className="welcome-user"> Welcome {this.state.userName}</h1>
+              <h1 className="welcome-user"> Welcome {this.state.userName}</h1>
               <img className="logo" src={require("./images/weathrly-logo.png")}/>
             <div className="search-container">
               <input className="search-input" type="text" placeholder="New Location" onChange={this.handleChange} list="cities" />
