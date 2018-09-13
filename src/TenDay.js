@@ -4,7 +4,6 @@ import Card from './Card'
 export default class TenDay extends Component {
   constructor() {
     super();
-
   }
 
   render() {
